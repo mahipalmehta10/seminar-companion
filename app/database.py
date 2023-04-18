@@ -43,12 +43,10 @@ class CRUDMixin(object):
             return db.session.commit()
         return
 
-
 class Model(CRUDMixin, db.Model):
     """Base model class that includes CRUD convenience methods."""
 
     __abstract__ = True
-
 
 class PkModel(Model):
     """Base model class that includes CRUD convenience methods, plus adds a 'primary key' column named ``id``."""
@@ -68,7 +66,6 @@ class PkModel(Model):
             return cls.query.get(int(record_id))
         return None
 
-
 def reference_col(
     tablename, nullable=False, pk_name="id", foreign_key_kwargs=None, column_kwargs=None
 ):
@@ -87,3 +84,4 @@ def reference_col(
         nullable=nullable,
         **column_kwargs,
     )
+
