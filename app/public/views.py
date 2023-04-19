@@ -16,6 +16,7 @@ from app.public.forms import LoginForm
 from app.user.forms import RegisterForm
 from app.user.models import User
 from app.utils import flash_errors
+from .forms import EventForm
 
 blueprint = Blueprint("public", __name__, static_folder="../static")
 
@@ -75,3 +76,13 @@ def about():
     """About page."""
     form = LoginForm(request.form)
     return render_template("public/about.html", form=form)
+
+
+@blueprint.route("/event/create")
+def create_event():
+    """event create."""
+    form = LoginForm(request.form)
+    event_form = EventForm(request.form)
+
+    return render_template("public/event_create.html", form=form, event_form = event_form)
+

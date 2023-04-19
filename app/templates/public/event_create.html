@@ -1,0 +1,20 @@
+
+ {% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <form method="post">
+      {{event_form}} 
+    </form>
+    <h1 class="mt-5">event information</h1>
+    <br>
+    <br/>
+    <form id="eventForm" class="form form-event" method="POST" action="" role="form">
+           {{ form.csrf_token }}
+            <div class="form-group">
+                {{form.username.label}}
+                {{form.username(placeholder="form-register", class_="form-control")}}
+            </div>
+</div>
+{% endblock %} 
+
