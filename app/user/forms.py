@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """User forms."""
 from flask_wtf import FlaskForm
-from wtforms import PasswordField, StringField
-from wtforms.validators import DataRequired, Email, EqualTo, Length
+from wtforms import PasswordField, StringField,DateField,FileField,IntegerField
+from wtforms.validators import DataRequired, Email, EqualTo, Length, InputRequired
 
 from .models import User
 
@@ -10,19 +10,17 @@ from .models import User
 class RegisterForm(FlaskForm):
     """Register form."""
 
-    username = StringField(
-        "Username", validators=[DataRequired(), Length(min=3, max=25)]
-    )
-    email = StringField(
-        "Email", validators=[DataRequired(), Email(), Length(min=6, max=40)]
-    )
-    password = PasswordField(
-        "Password", validators=[DataRequired(), Length(min=6, max=40)]
-    )
-    confirm = PasswordField(
-        "Verify password",
-        [DataRequired(), EqualTo("password", message="Passwords must match")],
-    )
+    username = StringField( "Username", validators=[DataRequired(), Length(min=3, max=25)])
+    email = StringField("Email", validators=[DataRequired(), Email(), Length(min=6, max=40)])
+    password = PasswordField("Password", validators=[DataRequired(), Length(min=6, max=40)])
+    confirm = PasswordField("Verify password",[DataRequired(), EqualTo("password", message="Passwords must match")],)
+    event_name = StringField("Eventname", validators=[InputRequired(), Length(min=3, max=25)])
+    organization_name = StringField("organization name", validators=[InputRequired(), Length(min=3, max=25)] )
+    event_banner = FileField( "eventbanner", validators=[InputRequired(), Length(min=3, max=25)] )
+    event_date = DateField("eventdate", validators=[InputRequired(), Length(min=3, max=10)])    
+    event_location = StringField("eventdate", validators=[InputRequired(), Length(min=3, max=30)])    
+    event_duration = IntegerField("eventdate", validators=[InputRequired(), Length(min=1, max=6)])   
+
 
     def __init__(self, *args, **kwargs):
         """Create instance."""
@@ -42,4 +40,5 @@ class RegisterForm(FlaskForm):
         if user:
             self.email.errors.append("Email already registered")
             return False
-        return True
+        return
+

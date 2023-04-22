@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """Public forms."""
 from flask_wtf import FlaskForm
-from wtforms import PasswordField, StringField
-from wtforms.validators import DataRequired
+from wtforms import PasswordField, StringField,FileField,DateField,IntegerField
+from wtforms.validators import DataRequired,InputRequired
 
 from app.user.models import User
 
@@ -12,6 +12,13 @@ class LoginForm(FlaskForm):
 
     username = StringField("Username", validators=[DataRequired()])
     password = PasswordField("Password", validators=[DataRequired()])
+    event_name = StringField('Event Name', validators=[InputRequired()])
+    organization = StringField('Organization', validators=[InputRequired()])
+    event_banner = FileField('Event Banner', validators=[InputRequired()])
+    event_date = DateField('Event Date', format='%Y-%m-%d', validators=[InputRequired()])
+    event_location = StringField('Event Location', validators=[InputRequired()])
+    event_duration = IntegerField('Event Duration (in days)', validators=[InputRequired()]) 
+
 
     def __init__(self, *args, **kwargs):
         """Create instance."""
@@ -49,12 +56,10 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your-secret-key-here'
 
 class EventForm(FlaskForm):
-    organization = StringField('Organization', validators=[InputRequired()])
-    event_name = StringField('Event Name', validators=[InputRequired()])
-    event_banner = FileField('Event Banner', validators=[InputRequired()])
-    event_date = DateField('Event Date', format='%Y-%m-%d', validators=[InputRequired()])
-    event_location = StringField('Event Location', validators=[InputRequired()])
-    event_duration = IntegerField('Event Duration (in days)', validators=[InputRequired()])
+    # event_banner = FileField('Event Banner', validators=[InputRequired()])
+    # event_date = DateField('Event Date', format='%Y-%m-%d', validators=[InputRequired()])
+    # event_location = StringField('Event Location', validators=[InputRequired()])
+    # event_duration = IntegerField('Event Duration (in days)', validators=[InputRequired()])
 
     def validate_event_banner(self, field):
         if not field.data or not field.data.filename.lower().endswith(('.png', '.jpg', '.jpeg')):
