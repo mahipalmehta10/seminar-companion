@@ -20,6 +20,7 @@ class RegisterForm(FlaskForm):
     event_date = DateField("eventdate", validators=[InputRequired(), Length(min=3, max=10)])    
     event_location = StringField("eventdate", validators=[InputRequired(), Length(min=3, max=30)])    
     event_duration = IntegerField("eventdate", validators=[InputRequired(), Length(min=1, max=6)])   
+    seminar_name=StringField( "Username", validators=[DataRequired(), Length(min=3, max=25)])
 
 
     def __init__(self, *args, **kwargs):

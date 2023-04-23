@@ -8,7 +8,9 @@ from flask import (
     render_template,
     request,
     url_for,
+    
 )
+import os 
 from flask_login import login_required, login_user, logout_user
 
 from app.extensions import login_manager
@@ -17,7 +19,7 @@ from app.user.forms import RegisterForm
 from app.user.models import User
 from app.utils import flash_errors
 from .forms import EventForm
-
+from .forms import SeminarForm
 blueprint = Blueprint("public", __name__, static_folder="../static")
 
 
@@ -85,4 +87,13 @@ def create_event():
     event_form = EventForm(request.form)
 
     return render_template("public/event_create.html", form=form, event_form = event_form)
+
+@blueprint.route("/seminar/")
+def create_seminar():
+    """  seminar information."""
+    form = LoginForm(request.form)
+    seminar_form = SeminarForm(request.form)
+
+    return render_template("public/seminar.html", form=form, event_form = seminar_form)
+
 
