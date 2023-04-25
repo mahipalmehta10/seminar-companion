@@ -19,6 +19,10 @@ class LoginForm(FlaskForm):
     event_location = StringField('Event Location', validators=[InputRequired()])
     event_duration = IntegerField('Event Duration (in days)', validators=[InputRequired()]) 
     seminar_name=StringField("Seminar Name", validators=[DataRequired()])
+    seminar_topic=StringField("Seminar Topic", validators=[DataRequired()])
+    seminar_speaker=StringField("Speaker Info", validators=[DataRequired()])
+    seminar_notes=FileField("notes", validators=[DataRequired()])
+    seminar_description=StringField("description",validators=[InputRequired()])
 
 
     def __init__(self, *args, **kwargs):
