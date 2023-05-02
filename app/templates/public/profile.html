@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+  
+  <h1 class="mt-5">profile information</h1>
+  <br>
+  <br/>
+  <form id="profileForm" class="form form-profile" method="POST" action="" role="form">
+    {{ form.csrf_token }}
+    <div class="form-group">
+      {{form.profile_image.label}}
+      {{form.profile_image(placeholder="image", class_="form-control")}}
+    </div>
+  </form>
+</div>
+
+{% endblock %} 

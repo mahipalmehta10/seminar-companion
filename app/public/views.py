@@ -20,6 +20,7 @@ from app.user.models import User
 from app.utils import flash_errors
 from .forms import EventForm
 from .forms import SeminarForm
+from .forms import ProfileForm
 blueprint = Blueprint("public", __name__, static_folder="../static")
 
 
@@ -95,5 +96,13 @@ def create_seminar():
     seminar_form = SeminarForm(request.form)
 
     return render_template("public/seminar.html", form=form, event_form = seminar_form)
+
+@blueprint.route("/profile/")
+def create_profile():
+    """  profile."""
+    form = LoginForm(request.form)
+    profile_form = ProfileForm(request.form)
+
+    return render_template("public/profile.html", form=form, event_form =profile_form)
 
 

@@ -2,32 +2,33 @@
 
 {% block content %}
 <div class="container">
-    <form method="post">
-      {{seminar_form}} 
-    <h1 class="mt-5">seminar information</h1>
-    <br>
-    <br/>
-    <form id="seminarForm" class="form form-seminar" method="POST" action="" role="form">
-           {{ form.csrf_token }}
-            <div class="form-group">
-                {{form.seminar_name.label}}
-                {{form.seminar_name(placeholder="seminar name", class_="form-control")}}
-            </div>
-            <div class="form-group">
-              {{form.seminar_topic.label}}
-              {{form.seminar_topic(placeholder="seminar topic", class_="form-control")}}
-          </div>
-          <div class="form-group">
-            {{form.seminar_speaker.label}}
-            {{form.seminar_speaker(placeholder="seminar name", class_="form-control")}}
-        </div>
-        <div class="form-group">
-          {{form.seminar_description.label}}
-          {{form.seminar_description(placeholder="description", class_="form-control")}}
-      </div>
-      <div class="form-group">
-        {{form.seminar_notes.label}}
-        {{form.seminar_notes(placeholder="notes", class_="form-control")}}
+  
+  <h1 class="mt-5">seminar information</h1>
+  <br>
+  <br/>
+  <form id="seminarForm" class="form form-seminar" method="POST" action="" role="form">
+    {{ form.csrf_token }}
+    <div class="form-group">
+      {{form.seminar_name.label}}
+      {{form.seminar_name(placeholder="seminar name", class_="form-control")}}
     </div>
+    <div class="form-group">
+      {{form.seminar_topic.label}}
+      {{form.seminar_topic(placeholder="seminar topic", class_="form-control")}}
+    </div>
+    <div class="form-group">
+      {{form.seminar_speaker.label}}
+      {{form.seminar_speaker(placeholder="seminar name", class_="form-control")}}
+    </div>
+    <div class="form-group">
+      {{form.seminar_description.label}}
+      {{form.seminar_description(placeholder="description", class_="form-control")}}
+    </div>
+    <div class="form-group">
+      {{form.seminar_notes.label}}
+      {{form.seminar_notes(placeholder="notes", class_="form-control")}}
+    </div>
+  </form>
+</div>
 
 {% endblock %} 

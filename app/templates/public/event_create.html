@@ -1,43 +1,43 @@
 
-  {% extends "layout.html" %}
+{% extends "layout.html" %}
 
 {% block content %}
 <div class="container">
     <form method="post">
       {{event_form}} 
-    <h1 class="mt-5">event information</h1>
-    <br>
-    <br/>
-    <form id="eventForm" class="form form-event" method="POST" action="" role="form">
-           {{ form.csrf_token }}
-            <div class="form-group">
-                {{form.event_name.label}}
-                {{form.event_name(placeholder="name of event", class_="form-control")}}
-            </div>
-            <div class="form-group">
-              {{form.organization.label}}
-              {{form.organization(placeholder=" organization name", class_="form-control")}}
-            </div>
-            <div class="form-group">
-              {{form.event_banner.label}}
-              {{form.event_banner(placeholder=" event_banner", class_="form-control")}}
-            </div>
-            <div class="form-group">
-              {{form.event_date.label}}
-              {{form.event_date(placeholder=" date of event", class_="form-control")}}
-            </div>
-            <div class="form-group">
-              {{form.event_location.label}}
-              {{form.event_location(placeholder=" location of the event", class_="form-control")}}
-            </div>
-            <div class="form-group">
-              {{form.event_duration.label}}
-              {{form.event_duration(placeholder=" duration of the event", class_="form-control")}}
-            </div>
-            <p><input class="btn btn-primary" type="submit" value="Register"></p>
-            
-</div>
+  <h1 class="mt-5">event information</h1>
+  <br>
+  <br/>
+  <form id="eventForm" class="form form-event" method="POST" action="" role="form" enctype="multipart/form-data">
+    {{ form.csrf_token }}
+    <div class="form-group">
+      {{form.event_name.label}}
+      {{form.event_name(placeholder="name of event", class_="form-control")}}
+    </div>
+    <div class="form-group">
+      {{form.organization.label}}
+      {{form.organization(placeholder=" organization name", class_="form-control")}}
+    </div>
+    <div class="form-group">
+      {{form.event_banner.label}}
+      {{form.event_banner(placeholder=" event_banner", class_="form-control")}}
+    </div>
+    <div class="form-group">
+      {{form.event_date.label}}
+      {{form.event_date(placeholder=" date of event", class_="form-control")}}
+    </div>
+    <div class="form-group">
+      {{form.event_location.label}}
+      {{form.event_location(placeholder=" location of the event", class_="form-control")}}
+    </div>
+    <div class="form-group">
+      {{form.event_duration.label}}
+      {{form.event_duration(placeholder=" duration of the event", class_="form-control")}}
+    </div>
+    <p><input class="btn btn-primary" type="submit" value="Register"></p>
+    
   </form>
+</div>
 {% endblock %} 
 
 

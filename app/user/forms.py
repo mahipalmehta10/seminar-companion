@@ -25,6 +25,7 @@ class RegisterForm(FlaskForm):
     seminar_speaker=StringField( "speaker ", validators=[DataRequired(), Length(min=3, max=25)])
     seminar_description=StringField( "description ", validators=[DataRequired(), Length(min=3, max=25)])
     seminar_notes=FileField( "notes ", validators=[DataRequired(), Length(min=3, max=25)])
+    profile_image=FileField( "eventbanner", validators=[InputRequired(), Length(min=3, max=25)] )
 
 
     def __init__(self, *args, **kwargs):

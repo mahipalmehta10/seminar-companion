@@ -23,6 +23,7 @@ class LoginForm(FlaskForm):
     seminar_speaker=StringField("Speaker Info", validators=[DataRequired()])
     seminar_notes=FileField("notes", validators=[DataRequired()])
     seminar_description=StringField("description",validators=[InputRequired()])
+    profile_image=FileField('Profile Image', validators=[InputRequired()])
 
 
     def __init__(self, *args, **kwargs):
@@ -61,3 +62,6 @@ class EventForm(FlaskForm):
     
 class SeminarForm(FlaskForm):
     ()
+
+class ProfileForm(FlaskForm):
+     profile_image = FileField('Profile Image', validators=[InputRequired()])
